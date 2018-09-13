@@ -11,19 +11,32 @@
     function test(n) {
         let write = "";//biến chứa string in ra màn hình
         let count = 0;//biến đếm(số đang đếm tới hiện tại)
-        for (let j=0;;j++){// lặp tạo dòng
-            write =write+"<br>";// mỗi lần lặp thêm vào 1 dòng
-            for (let i=0;i<j;i++){//lặp ghi chữ số trên 1 dòng
+        for (let j = 0; ; j++) {// lặp tạo dòng
+            write = write + "<br>";// mỗi lần lặp thêm vào 1 dòng
+            for (let i = 0; i < j; i++) {//lặp ghi chữ số trên 1 dòng
+                if (count === n) {
+                    count++;
+                    console.log(write);
+                    break;
+                }//nếu biến đếm lớn hơn số nhập vào thì dừng vòng lặp
+
                 count++;
-                write = write+count+"&#160;&#160;&#160;";
-                if(count>=n){break;}//nếu biến đếm lớn hơn số nhập vào thì dừng vòng lặp
+                write = write + count + "&#160;&#160;&#160;";
             }
-            if(count>=n){break;}//nếu biến đếm lớn hơn số nhập vào thì dừng vòng lặp
+            if (count === n) {
+                break;
+            }
+            if (count > n) {
+                let index = write.lastIndexOf("<br>");
+                write = (write.slice(0, index)).concat(write.slice(index + 4));
+                break;
+            }//nếu biến đếm lớn hơn số nhập vào thì dừng vòng lặp
         }
         return write;
     }
+
     let num = Number(prompt("num?",));
-document.getElementById("toan").innerHTML = test(num);
+    document.getElementById("toan").innerHTML = test(num);
 </script>
 </body>
 </html>
