@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+<output id="toan"></output>
+<script>
+    //số number trên 1 dòng l uôn bằng số dòng
+    function test(n) {
+        let write = "";//biến chứa string in ra màn hình
+        let count = 0;//biến đếm(số đang đếm tới hiện tại)
+        for (let j=0;;j++){// lặp tạo dòng
+            write =write+"<br>";// mỗi lần lặp thêm vào 1 dòng
+            for (let i=0;i<j;i++){//lặp ghi chữ số trên 1 dòng
+                count++;
+                write = write+count+"&#160;&#160;&#160;";
+                if(count>=n){break;}//nếu biến đếm lớn hơn số nhập vào thì dừng vòng lặp
+            }
+            if(count>=n){break;}//nếu biến đếm lớn hơn số nhập vào thì dừng vòng lặp
+        }
+        return write;
+    }
+    let num = Number(prompt("num?",));
+document.getElementById("toan").innerHTML = test(num);
+</script>
+</body>
+</html>
